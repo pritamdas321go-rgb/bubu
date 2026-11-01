@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>For Sushreeta 🌸 A Little Cozy Universe</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Gaegu, Patrick Hand, and Sniglet for authentic doodle warmth -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Patrick+Hand&family=Sniglet:wght@400;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --crayon-stroke: #2b2538;
+      --pastel-pink: #ffd9e4;
+      --pastel-yellow: #fff3b0;
+      --pastel-mint: #d4f7dc;
+      --pastel-lavender: #ece2fe;
+    }
+
+    * {
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Patrick Hand', cursive, sans-serif;
+      background-color: #fbf8f3;
+      color: #2b2538;
+      user-select: none;
+      min-height: 100dvh;
+    }
+
+    .font-doodle {
+      font-family: 'Gaegu', cursive;
+    }
+
+    .font-chubby {
+      font-family: 'Sniglet', cursive;
+    }
+
+    /* Hand-drawn Crayon Borders */
+    .doodle-card {
+      background: #ffffff;
+      border: 3.5px solid var(--crayon-stroke);
+      border-radius: 255px 18px 225px 22px/22px 225px 18px 255px;
+      box-shadow: 4px 6px 0px rgba(43, 37, 56, 0.9);
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .doodle-btn {
+      border: 3px solid var(--crayon-stroke);
+      border-radius: 255px 25px 225px 25px/25px 225px 25px 255px;
+      box-shadow: 3px 4px 0px rgba(43, 37, 56, 0.9);
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+    }
+    .doodle-btn:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 4px 6px 0px rgba(43, 37, 56, 0.95);
+    }
+    .doodle-btn:active {
+      transform: translateY(2px) scale(0.97);
+      box-shadow: 1px 2px 0px rgba(43, 37, 56, 0.9);
+    }
+
+    .pin-key-btn {
+      border: 2.5px solid var(--crayon-stroke);
+      border-radius: 20px;
+      box-shadow: 2px 3px 0px rgba(43, 37, 56, 0.9);
+      transition: all 0.1s ease;
+    }
+    .pin-key-btn:active {
+      transform: scale(0.92);
+      box-shadow: 0px 1px 0px rgba(43, 37, 56, 0.9);
+    }
+
+    /* Pastel Yellow Spirals & Soft Texture */
+    .crayon-spiral-bg {
+      background-color: #fdfaf3;
+      background-image: 
+        radial-gradient(circle at 50% 50%, #fff0a6 2px, transparent 2px),
+        radial-gradient(circle at 15% 25%, #ffe1eb 1.5px, transparent 1.5px),
+        radial-gradient(circle at 85% 75%, #dbf8e3 2px, transparent 2px);
+      background-size: 32px 32px, 26px 26px, 38px 38px;
+    }
+
+    @keyframes gentleSquish {
+      0%, 100% { transform: scale(1, 1); }
+      50% { transform: scale(1.04, 0.96) translateY(2px); }
+    }
+    .idle-squish {
+      animation: gentleSquish 3s ease-in-out infinite;
+    }
+
+    @keyframes wiggleKeypad {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-8px); }
+      40%, 80% { transform: translateX(8px); }
+    }
+    .shake-error {
+      animation: wiggleKeypad 0.4s ease-in-out;
+    }
+
+    @keyframes popParticle {
+      0% { opacity: 0; transform: translate(0, 0) scale(0.3); }
+      50% { opacity: 1; transform: translate(var(--tx), var(--ty)) scale(1.2); }
+      100% { opacity: 0; transform: translate(calc(var(--tx) * 1.3), calc(var(--ty) * 1.5 - 20px)) scale(0.6); }
+    }
+    .particle-pop {
+      position: absolute;
+      pointer-events: none;
+      animation: popParticle 1s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+      z-index: 999;
+    }
+
+    @keyframes stampBounce {
+      0% { transform: scale(2.5) rotate(-20deg); opacity: 0; }
+      70% { transform: scale(0.9) rotate(5deg); opacity: 1; }
+      100% { transform: scale(1) rotate(-3deg); opacity: 1; }
+    }
+    .stamp-anim {
+      animation: stampBounce 0.5s cubic-bezier(0.17, 0.89, 0.32, 1.28) forwards;
+    }
+
+    .nav-pill.active {
+      background-color: #ffd9e4 !important;
+      border-color: #2b2538 !important;
+      box-shadow: 2px 3px 0px #2b2538 !important;
+      font-weight: 800;
+    }
+
+    .lined-notepad {
+      background-color: #fffdf7;
+      background-image: repeating-linear-gradient(transparent, transparent 28px, #fae2cc 28px, #fae2cc 30px);
+      line-height: 30px;
+    }
+  </style>
+</head>
+<body class="crayon-spiral-bg min-h-screen text-slate-800 flex flex-col items-center">
+
+  <!-- ============================================== -->
+  <!-- 🔐 SCREEN 1: THE SECRET GATE (PASSWORD 2511) -->
+  <!-- ============================================== -->
+  <div id="lockScreen" class="fixed inset-0 z-50 bg-[#fef9f3] flex flex-col items-center justify-center p-4">
+    <div class="w-full max-w-[390px] doodle-card p-6 bg-white/95 text-center flex flex-col items-center relative overflow-hidden shadow-2xl">
+      
+      <!-- Cute Top Badge -->
+      <div class="inline-block bg-pink-100 border-2 border-[#2b2538] rounded-full px-3 py-0.5 text-xs font-doodle font-bold text-pink-700 mb-2">
+        🔒 Secret Vault for Bubu Only
+      </div>
+
+      <!-- Cute Sleeping / Reading Bunny Vector -->
+      <div class="w-28 h-28 my-1 relative">
+        <svg class="w-full h-full idle-squish" viewBox="0 0 120 120">
+          <circle cx="60" cy="60" r="50" fill="#fff3b0" opacity="0.6"/>
+          <!-- Bunny Ears -->
+          <path d="M 46 45 C 38 15, 52 10, 56 38" fill="#ffffff" stroke="#2b2538" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M 64 38 C 68 10, 82 15, 74 45" fill="#ffffff" stroke="#2b2538" stroke-width="3.5" stroke-linecap="round"/>
+          <ellipse cx="50" cy="28" rx="3" ry="8" fill="#ffb7c5"/>
+          <ellipse cx="70" cy="28" rx="3" ry="8" fill="#ffb7c5"/>
+          <!-- Bunny Head & Cozy Body Under Blanket -->
+          <circle cx="60" cy="55" r="22" fill="#ffffff" stroke="#2b2538" stroke-width="3.5"/>
+          <path d="M 52 54 Q 56 50 60 54" stroke="#2b2538" stroke-width="2.5" fill="none"/>
+          <path d="M 60 54 Q 64 50 68 54" stroke="#2b2538" stroke-width="2.5" fill="none"/>
+          <ellipse cx="48" cy="58" rx="3.5" ry="2" fill="#f472b6"/>
+          <ellipse cx="72" cy="58" rx="3.5" ry="2" fill="#f472b6"/>
+          <polygon points="58,58 62,58 60,60" fill="#f43f5e"/>
+          <!-- Cozy Blanket & Little Book -->
+          <path d="M 32 75 C 32 65, 88 65, 88 75 C 88 95, 32 95, 32 75 Z" fill="#ffd9e4" stroke="#2b2538" stroke-width="3.5"/>
+          <rect x="48" y="70" width="24" height="15" rx="3" fill="#ffffff" stroke="#2b2538" stroke-width="2"/>
+          <path d="M 60 70 L 60 85" stroke="#2b2538" stroke-width="2"/>
+        </svg>
+      </div>
+
+      <h2 class="text-2xl font-doodle font-bold text-slate-800 mb-1">
+        Enter Passcode, Bubu! ✨
+      </h2>
+      
+      <!-- HINT -->
+      <div class="bg-amber-100 border-2 border-dashed border-[#2b2538] rounded-xl px-3 py-1.5 text-xs font-note text-amber-950 mb-4 max-w-[280px]">
+        💡 <strong>Hint:</strong> "Less scrolling, more living at the canteen"
+      </div>
+
+      <!-- PIN Indicator Dots -->
+      <div id="pinDots" class="flex gap-4 mb-4">
+        <div class="w-4 h-4 rounded-full border-2 border-[#2b2538] bg-white transition-all"></div>
+        <div class="w-4 h-4 rounded-full border-2 border-[#2b2538] bg-white transition-all"></div>
+        <div class="w-4 h-4 rounded-full border-2 border-[#2b2538] bg-white transition-all"></div>
+        <div class="w-4 h-4 rounded-full border-2 border-[#2b2538] bg-white transition-all"></div>
+      </div>
+
+      <!-- Error feedback -->
+      <div id="pinErrorMsg" class="h-4 text-xs font-doodle font-bold text-rose-600 mb-2 opacity-0 transition-opacity">
+        Wrong code! Check the passcode hint ☕
+      </div>
+
+      <!-- Keypad -->
+      <div class="grid grid-cols-3 gap-2 w-full max-w-[260px]">
+        <button class="pin-key-btn bg-yellow-50 hover:bg-yellow-100 py-3 text-lg font-doodle font-bold" data-key="1">1</button>
+        <button class="pin-key-btn bg-yellow-50 hover:bg-yellow-100 py-3 text-lg font-doodle font-bold" data-key="2">2</button>
+        <button class="pin-key-btn bg-yellow-50 hover:bg-yellow-100 py-3 text-lg font-doodle font-bold" data-key="3">3</button>
+        <button class="pin-key-btn bg-yellow-50 hover:bg-yellow-100 py-3 text-lg font-doodle font-bold" data-key="4">4</button>
+        <button class="pin-key-btn bg-yellow-50 hover:bg-yellow-100 py-3 text-lg font-doodle font-bold" data-key="5">5</button>
+        <button class="pin-key-btn bg-yellow-50 hover:bg-yellow-100 py-3 text-lg font-doodle font-bold" data-key="6">6</button>
+        <button class="pin-key-btn bg-yellow-50 hover:bg-yellow-100 py-3 text-lg font-doodle font-bold" data-key="7">7</button>
+        <button class="pin-key-btn bg-yellow-50 hover:bg-yellow-100 py-3 text-lg font-doodle font-bold" data-key="8">8</button>
+        <button class="pin-key-btn bg-yellow-50 hover:bg-yellow-100 py-3 text-lg font-doodle font-bold" data-key="9">9</button>
+        <button class="pin-key-btn bg-rose-100 hover:bg-rose-200 py-3 text-xs font-doodle font-bold" data-key="clear">Clear</button>
+        <button class="pin-key-btn bg-yellow-50 hover:bg-yellow-100 py-3 text-lg font-doodle font-bold" data-key="0">0</button>
+        <button class="pin-key-btn bg-amber-100 hover:bg-amber-200 py-3 text-xs font-doodle font-bold" data-key="back">⌫</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================== -->
+  <!-- MAIN APP CONTAINER (MOBILE VIEWPORT CONSTRAINED) -->
+  <!-- ============================================== -->
+  <div id="mainApp" class="w-full max-w-[440px] min-h-screen flex flex-col justify-between shadow-2xl bg-[#fffefc]/95 border-x-0 sm:border-x-4 border-[#2b2538] relative overflow-hidden hidden">
+    
+    <!-- Top Sticky Mobile Header -->
+    <header class="sticky top-0 z-40 bg-[#fffdf9]/95 backdrop-blur-md px-3 py-2.5 border-b-3 border-[#2b2538]">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-1.5">
+          <span class="text-xl">🌸</span>
+          <span class="font-doodle text-xl font-bold tracking-wide text-pink-700">bubu's universe</span>
+        </div>
+        
+        <button id="musicToggleBtn" class="doodle-btn bg-pink-100 hover:bg-pink-200 px-2 py-1 text-xs font-bold font-doodle flex items-center gap-1">
+          <span id="musicIcon">🎵</span>
+          <span id="musicLabel">BGM</span>
+        </button>
+      </div>
+
+      <!-- Tab Navigation Pills -->
+      <nav class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pt-2 pb-0.5 justify-start px-0.5">
+        <button data-tab="cozy" class="nav-pill active doodle-btn bg-white px-2.5 py-1 text-xs font-doodle whitespace-nowrap">
+          📖 Cozy Corner
+        </button>
+        <button data-tab="hype" class="nav-pill doodle-btn bg-white px-2.5 py-1 text-xs font-doodle whitespace-nowrap">
+          👑 10 Bubu Facts
+        </button>
+        <button data-tab="draw" class="nav-pill doodle-btn bg-white px-2.5 py-1 text-xs font-doodle whitespace-nowrap">
+          🎨 Draw Duel
+        </button>
+        <button data-tab="games" class="nav-pill doodle-btn bg-white px-2.5 py-1 text-xs font-doodle whitespace-nowrap">
+          🛋️ Lyadh Zone
+        </button>
+        <button data-tab="wishes" class="nav-pill doodle-btn bg-white px-2.5 py-1 text-xs font-doodle whitespace-nowrap">
+          🎁 Unbox & Stars
+        </button>
+      </nav>
+    </header>
+
+    <!-- TAB CONTENTS -->
+    <main class="p-3.5 flex-grow flex flex-col gap-6">
+
+      <!-- ============================================== -->
+      <!-- TAB 1: 📖 BUBU'S COZY CORNER -->
+      <!-- ============================================== -->
+      <section id="tab-cozy" class="tab-view flex flex-col gap-5">
+        
+        <!-- Welcome Hero Banner -->
+        <div class="doodle-card p-5 bg-gradient-to-b from-[#fff6ed] to-[#ffe9f0] text-center relative overflow-hidden">
+          <div class="inline-block bg-[#ffebf2] border-2 border-[#2b2538] rounded-full px-3 py-0.5 text-xs font-doodle font-bold text-pink-800 mb-2">
+            ✨ Certified Prettiest Girl in da World ✨
+          </div>
+          <h1 class="text-2xl font-bold font-doodle text-[#2b2538] leading-tight mb-2">
+            Welcome to Your Sanctuary, Sushreeta!
+          </h1>
+          <p class="font-note text-base text-slate-700 leading-snug">
+            "A peaceful little universe built for Bubu—lover of books, master of lazy afternoon lyadh, brilliant artist, and hands-down the prettiest soul alive."
+          </p>
+
+          <!-- Interactive Cozy Burrito Bunny (Bubu) -->
+          <div class="relative w-44 h-44 mx-auto mt-2 cursor-pointer group" id="heroBubuArea">
+            <svg id="heroBubuSvg" class="w-full h-full idle-squish drop-shadow-sm transition-transform" viewBox="0 0 200 200">
+              <circle cx="100" cy="100" r="80" fill="#fef08a" opacity="0.6" stroke="#2b2538" stroke-width="2.5" stroke-dasharray="6,4" />
+              <!-- Giant Soft Blanket (Burrito roll) -->
+              <ellipse cx="100" cy="140" rx="65" ry="40" fill="#fed7aa" stroke="#2b2538" stroke-width="4.5" />
+              <path d="M 50 130 C 70 160, 130 160, 150 130" stroke="#2b2538" stroke-width="3.5" fill="none" />
+              
+              <!-- Cute Bunny Peeking Out with a Book -->
+              <g transform="translate(45, 30)">
+                <!-- Ears -->
+                <path d="M 32 35 C 18 2, 42 -2, 48 30" fill="#ffffff" stroke="#2b2538" stroke-width="4" stroke-linejoin="round"/>
+                <path d="M 62 30 C 68 -2, 92 2, 78 35" fill="#ffffff" stroke="#2b2538" stroke-width="4" stroke-linejoin="round"/>
+                <ellipse cx="36" cy="16" rx="4" ry="10" fill="#ffb7c5"/>
+                <ellipse cx="74" cy="16" rx="4" ry="10" fill="#ffb7c5"/>
+                <!-- Head -->
+                <circle cx="55" cy="55" r="32" fill="#ffffff" stroke="#2b2538" stroke-width="4.5"/>
+                <!-- Happy Blushing Cheeks -->
+                <ellipse cx="38" cy="62" rx="7" ry="4.5" fill="#f472b6" opacity="0.85"/>
+                <ellipse cx="72" cy="62" rx="7" ry="4.5" fill="#f472b6" opacity="0.85"/>
+                <!-- Eyes & Nose -->
+                <path d="M 40 50 Q 46 44 52 50" stroke="#2b2538" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <path d="M 58 50 Q 64 44 70 50" stroke="#2b2538" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <polygon points="53,57 57,57 55,60" fill="#f43f5e"/>
+                <path d="M 55 60 Q 52 64 48 62 M 55 60 Q 58 64 62 62" stroke="#2b2538" stroke-width="2" fill="none"/>
+                <!-- Book in paws -->
+                <rect x="35" y="72" width="40" height="25" rx="4" fill="#a7f3d0" stroke="#2b2538" stroke-width="3"/>
+                <path d="M 55 72 L 55 97" stroke="#2b2538" stroke-width="2"/>
+                <text x="40" y="86" font-size="9" font-family="'Gaegu'">📖</text>
+              </g>
+            </svg>
+            <span class="block text-[11px] font-doodle font-bold text-pink-700 bg-white/95 border border-[#2b2538] rounded-full py-0.5 px-2 mt-1 mx-auto max-w-fit shadow-xs">
+              👉 Tap Bubu for cozy purrs & blushes!
+            </span>
+          </div>
+
+          <div class="flex justify-center gap-2 mt-3">
+            <button id="patBubuBtn" class="doodle-btn bg-amber-200 px-3.5 py-1 text-sm font-doodle font-bold">
+              📚 Hand a New Novel
+            </button>
+            <button id="sparkleBubuBtn" class="doodle-btn bg-pink-200 px-3.5 py-1 text-sm font-doodle font-bold">
+              ✨ Gentle Headpat
+            </button>
+          </div>
+        </div>
+
+        <!-- 3 Pillars of Sushreeta (Cards) -->
+        <div class="grid grid-cols-3 gap-2">
+          
+          <div class="doodle-card p-2 text-center bg-yellow-50">
+            <span class="text-2xl block mb-1">📚</span>
+            <h4 class="font-doodle text-xs font-bold text-slate-800">Book Addict</h4>
+            <p class="font-note text-[11px] text-slate-600 leading-tight">Can finish 400 pages before sunset.</p>
+          </div>
+
+          <div class="doodle-card p-2 text-center bg-pink-50">
+            <span class="text-2xl block mb-1">🛋️</span>
+            <h4 class="font-doodle text-xs font-bold text-slate-800">Lyadh Queen</h4>
+            <p class="font-note text-[11px] text-slate-600 leading-tight">Olympic Gold in staying snug in bed.</p>
+          </div>
+
+          <div class="doodle-card p-2 text-center bg-emerald-50">
+            <span class="text-2xl block mb-1">🎨</span>
+            <h4 class="font-doodle text-xs font-bold text-slate-800">Art Master</h4>
+            <p class="font-note text-[11px] text-slate-600 leading-tight">Doodles that radiate pure cuteness.</p>
+          </div>
+
+        </div>
+
+        <!-- Cozy Fairy Light Reading Nook Card -->
+        <div class="doodle-card p-4 bg-gradient-to-b from-[#ffdbe5]/50 to-[#e2d9f3]/50">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-xl">🕯️</span>
+            <h3 class="font-doodle text-xl font-bold text-slate-800">The Fairy-Light Reading Nook</h3>
+          </div>
+          <p class="font-note text-sm text-slate-700 leading-snug mb-3">
+            Surrounded by towering stacks of novels, warm fuzzy blankets, soft pillow fortresses, and steaming cocoa. Nothing compares to watching Sushreeta completely lost in a good story.
+          </p>
+
+          <div id="canteenDuoBox" class="bg-white/80 rounded-xl border-2 border-[#2b2538] p-3 text-center cursor-pointer select-none">
+            <div class="text-[11px] font-doodle font-bold text-pink-700 mb-1">
+              ✨ Tap to light up the fairy lights & warm drinks! ✨
+            </div>
+            <svg class="w-full h-28 mx-auto" viewBox="0 0 240 100">
+              <path d="M 20 85 L 220 85" stroke="#2b2538" stroke-width="3" stroke-linecap="round"/>
+              <!-- Fairy lights wire across top -->
+              <path d="M 15 20 Q 65 35 120 20 Q 175 35 225 20" stroke="#2b2538" stroke-width="1.8" fill="none" stroke-dasharray="3,3"/>
+              <circle cx="50" cy="27" r="4.5" fill="#fde047" stroke="#2b2538" stroke-width="1.5"/>
+              <circle cx="95" cy="25" r="4.5" fill="#f472b6" stroke="#2b2538" stroke-width="1.5"/>
+              <circle cx="145" cy="25" r="4.5" fill="#a7f3d0" stroke="#2b2538" stroke-width="1.5"/>
+              <circle cx="190" cy="27" r="4.5" fill="#fed7aa" stroke="#2b2538" stroke-width="1.5"/>
+              <!-- Cozy Stack of Books -->
+              <g id="cupLeft" class="transition-transform duration-200">
+                <rect x="65" y="65" width="45" height="18" rx="3" fill="#ffd9e4" stroke="#2b2538" stroke-width="2.5"/>
+                <rect x="70" y="50" width="38" height="15" rx="3" fill="#fef08a" stroke="#2b2538" stroke-width="2.5"/>
+                <rect x="74" y="38" width="32" height="12" rx="2" fill="#c7d2fe" stroke="#2b2538" stroke-width="2"/>
+                <text x="84" y="47" font-size="8">📚</text>
+              </g>
+              <!-- Steaming Mug -->
+              <g id="cupRight" class="transition-transform duration-200">
+                <rect x="135" y="45" width="30" height="38" rx="6" fill="#fed7aa" stroke="#2b2538" stroke-width="3"/>
+                <path d="M 165 52 C 180 52, 180 68, 165 68" fill="none" stroke="#2b2538" stroke-width="2.5"/>
+                <path d="M 145 38 Q 148 28 145 22 M 155 38 Q 158 28 155 22" stroke="#2b2538" stroke-width="2" fill="none"/>
+                <text x="144" y="68" font-size="12">☕</text>
+              </g>
+              <g id="cheersSpark" opacity="0" class="transition-opacity duration-200">
+                <text x="115" y="45" font-size="16">✨</text>
+                <text x="112" y="30" font-size="12">💖</text>
+              </g>
+            </svg>
+            <div id="cheersStatusMsg" class="font-note text-xs text-pink-800 font-bold mt-1">
+              "Warm books and quiet moments with Bubu."
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ============================================== -->
+      <!-- TAB 2: 👑 THE 10 BUBU HYPE FACTS -->
+      <!-- ============================================== -->
+      <section id="tab-hype" class="tab-view hidden flex flex-col gap-5">
+        
+        <!-- Header -->
+        <div class="doodle-card p-5 bg-gradient-to-r from-amber-100 via-pink-100 to-purple-100 text-center relative">
+          <span class="inline-block bg-yellow-300 border-2 border-[#2b2538] rounded-full px-3 py-0.5 text-xs font-doodle font-bold mb-2">
+            👑 Certified Truth Vault 👑
+          </span>
+          <h2 class="text-2xl font-doodle font-bold text-[#2b2538] leading-tight mb-1">
+            10 Undeniable Facts About Sushreeta
+          </h2>
+          <p class="font-note text-xs text-slate-700">
+            Scientifically verified facts about the prettiest girl and the ultimate lyadh specialist:
+          </p>
+        </div>
+
+        <!-- Flipper Card -->
+        <div class="doodle-card p-5 bg-[#fffef9] flex flex-col items-center text-center relative overflow-hidden">
+          <div class="w-full flex justify-between items-center text-xs font-doodle font-bold text-slate-500 mb-3 border-b-2 border-dashed border-amber-200 pb-1.5">
+            <span>FACT <span id="hypeCardNum" class="text-pink-600 text-base">1</span> / 10</span>
+            <span class="text-amber-600">Tap arrows to flip! 🌟</span>
+          </div>
+
+          <div id="hypeCardContent" class="min-h-[110px] flex items-center justify-center p-2 text-center transition-all duration-200">
+            <p id="hypeCardText" class="font-note text-xl text-slate-800 leading-snug font-bold">
+              "1. Officially certified: Prettiest human in this and every single parallel dimension."
+            </p>
+          </div>
+
+          <!-- Flip Controls -->
+          <div class="flex items-center gap-3 mt-4 w-full">
+            <button id="prevHypeBtn" class="doodle-btn flex-1 bg-yellow-100 hover:bg-yellow-200 py-2 font-doodle font-bold text-sm">
+              ⬅️ Prev Fact
+            </button>
+            <button id="nextHypeBtn" class="doodle-btn flex-1 bg-pink-200 hover:bg-pink-300 py-2 font-doodle font-bold text-sm">
+              Next Fact ➡️
+            </button>
+          </div>
+
+          <!-- Toggle list -->
+          <button id="toggleAllHypeBtn" class="mt-4 text-xs font-doodle font-bold text-pink-700 underline">
+            📜 View all 10 facts at once
+          </button>
+
+          <div id="allHypeList" class="hidden w-full mt-4 text-left space-y-2 border-t-2 border-dashed border-pink-200 pt-3">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+
+        <!-- Official Seal of Certified Prettiest Human -->
+        <div class="doodle-card p-4 bg-gradient-to-b from-amber-50 to-orange-50 text-center relative">
+          <div class="text-xs font-doodle font-bold text-amber-800 uppercase tracking-wider mb-1">Official Decree of the Universe</div>
+          <h4 class="font-doodle text-xl font-bold text-slate-800 mb-1">Certificate of Supreme Loveliness</h4>
+          <p class="font-note text-xs text-slate-600 mb-3">
+            Awarded to Sushreeta for winning every beauty and cuteness contest without even trying.
+          </p>
+
+          <div class="flex justify-center my-2">
+            <button id="stampSealBtn" class="doodle-btn bg-rose-200 hover:bg-rose-300 text-rose-950 font-doodle font-bold text-sm px-4 py-1.5 flex items-center gap-1.5">
+              <span>💮</span> Tap to Stamp Official Seal
+            </button>
+          </div>
+
+          <div id="stampArea" class="h-14 flex items-center justify-center">
+            <div id="stampBadge" class="hidden text-pink-900 border-3 border-pink-700 bg-pink-100/95 px-3 py-1 rounded-xl font-doodle text-base font-extrabold rotate-[-4deg] shadow-sm">
+              👑 PRETTIEST GIRL IN DA WORLD: 1000% VERIFIED 👑
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ============================================== -->
+      <!-- TAB 3: 🎨 DRAW DUEL (5-LEVEL ACCURACY TEST) -->
+      <!-- ============================================== -->
+      <section id="tab-draw" class="tab-view hidden flex flex-col gap-4">
+        
+        <div class="doodle-card p-4 bg-gradient-to-r from-emerald-50 via-teal-50 to-sky-50 text-center">
+          <div class="inline-block bg-emerald-200 border-2 border-[#2b2538] rounded-full px-2.5 py-0.5 text-xs font-doodle font-bold mb-1">
+            🎨 Bubu's Sketch Duel
+          </div>
+          <h2 class="text-2xl font-doodle font-bold text-slate-800">Drawing Accuracy Test!</h2>
+          <p class="font-note text-xs text-slate-600">
+            Showcase your legendary drawing talents! Trace or sketch each cozy doodle below to claim your master artist rank:
+          </p>
+        </div>
+
+        <!-- Level Selector Chips -->
+        <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1">
+          <button data-level="0" class="draw-lvl-btn doodle-btn bg-pink-200 px-2.5 py-1 text-xs font-doodle font-bold whitespace-nowrap active-level">
+            Lvl 1: Vintage Novel
+          </button>
+          <button data-level="1" class="draw-lvl-btn doodle-btn bg-white px-2.5 py-1 text-xs font-doodle font-bold whitespace-nowrap">
+            Lvl 2: Sleeping Sloth
+          </button>
+          <button data-level="2" class="draw-lvl-btn doodle-btn bg-white px-2.5 py-1 text-xs font-doodle font-bold whitespace-nowrap">
+            Lvl 3: Palette & Brush
+          </button>
+          <button data-level="3" class="draw-lvl-btn doodle-btn bg-white px-2.5 py-1 text-xs font-doodle font-bold whitespace-nowrap">
+            Lvl 4: Magic Star
+          </button>
+          <button data-level="4" class="draw-lvl-btn doodle-btn bg-white px-2.5 py-1 text-xs font-doodle font-bold whitespace-nowrap">
+            Lvl 5: Sparkly Heart
+          </button>
+        </div>
+
+        <!-- Canvas Card -->
+        <div class="doodle-card p-3 bg-white flex flex-col gap-2">
+          
+          <div class="flex justify-between items-center text-xs font-doodle font-bold px-1">
+            <span id="targetCharTitle" class="text-slate-700 text-sm">Target: Vintage Novel</span>
+            <span class="text-pink-600">Trace with your finger! ✏️</span>
+          </div>
+
+          <!-- Drawing Canvas Container -->
+          <div class="relative w-full h-72 rounded-2xl border-3 border-[#2b2538] bg-[#fffef7] overflow-hidden select-none touch-none">
+            <!-- Background Silhouette Guide -->
+            <div id="canvasTemplateGuide" class="absolute inset-0 pointer-events-none opacity-30 flex items-center justify-center p-4"></div>
+            <!-- Canvas -->
+            <canvas id="accuracyCanvas" class="w-full h-full block cursor-crosshair relative z-10"></canvas>
+          </div>
+
+          <!-- Tools -->
+          <div class="flex items-center justify-between gap-1.5 pt-1">
+            <div class="flex items-center gap-1">
+              <button id="clearCanvasBtn" class="doodle-btn bg-amber-100 hover:bg-amber-200 px-2.5 py-1 text-xs font-doodle font-bold">
+                🧹 Clear
+              </button>
+              <button id="toggleGuideBtn" class="doodle-btn bg-sky-100 hover:bg-sky-200 px-2.5 py-1 text-xs font-doodle font-bold">
+                👁️ Hint Guide
+              </button>
+            </div>
+
+            <button id="gradeDrawingBtn" class="doodle-btn bg-pink-300 hover:bg-pink-400 px-3.5 py-1.5 text-xs font-doodle font-bold text-pink-950 flex items-center gap-1">
+              <span>⭐</span> Grade My Art!
+            </button>
+          </div>
+
+          <!-- Grade Evaluation Banner -->
+          <div id="gradeResultBox" class="hidden mt-2 p-3 rounded-xl border-2 border-[#2b2538] bg-gradient-to-r from-pink-100 to-yellow-100 text-center">
+            <div class="text-2xl font-doodle font-bold text-pink-700" id="gradeScoreText">
+              ACCURACY: 99.9% 🔥
+            </div>
+            <p id="gradeFeedbackText" class="font-note text-xs text-slate-800 font-bold mt-1">
+              "IMMENSE TALENT! Da Vinci just surrendered his brushes to Sushreeta."
+            </p>
+            <button id="nextLevelUnlockBtn" class="mt-2 doodle-btn bg-emerald-200 px-3 py-1 text-xs font-doodle font-bold">
+              Next Doodle ➡️
+            </button>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ============================================== -->
+      <!-- TAB 4: 🛋️ LYADH ZONE & MOOD LAB -->
+      <!-- ============================================== -->
+      <section id="tab-games" class="tab-view hidden flex flex-col gap-5">
+        
+        <!-- Game 1: The Lyadh Meter (Tap to power up chilling) -->
+        <div class="doodle-card p-4 bg-gradient-to-b from-purple-50 to-pink-50 text-center">
+          <div class="inline-block bg-purple-200 border-2 border-[#2b2538] rounded-full px-2.5 py-0.5 text-xs font-doodle font-bold mb-1">
+            🛋️ Superpower: Lyadh Khawa
+          </div>
+          <h3 class="text-xl font-doodle font-bold text-slate-800 mb-1">The Ultimate Lyadh Meter</h3>
+          <p class="font-note text-xs text-slate-600 mb-2">
+            Tap the fluffy pillow to fuel Sushreeta's superpower and reach 100% maximum comfy chilling!
+          </p>
+
+          <!-- Meter Progress Bar -->
+          <div class="w-full bg-white h-6 rounded-full border-2 border-[#2b2538] overflow-hidden p-0.5 mb-2 relative">
+            <div id="lyadhProgressBar" class="h-full bg-gradient-to-r from-yellow-300 via-pink-400 to-purple-400 rounded-full transition-all duration-300" style="width: 25%;"></div>
+            <span id="lyadhPercentText" class="absolute inset-0 flex items-center justify-center font-doodle text-xs font-bold text-[#2b2538]">
+              25% Chilled Out
+            </span>
+          </div>
+
+          <!-- Pillow Tap Area -->
+          <div id="pillowTapArea" class="w-32 h-24 mx-auto my-1 cursor-pointer select-none">
+            <svg class="w-full h-full idle-squish drop-shadow-sm" viewBox="0 0 100 80">
+              <rect x="10" y="15" width="80" height="50" rx="16" fill="#fbcfe8" stroke="#2b2538" stroke-width="3.5"/>
+              <path d="M 20 25 Q 50 40 80 25" stroke="#2b2538" stroke-width="2" fill="none" opacity="0.4"/>
+              <text x="36" y="47" font-size="22">🛋️</text>
+            </svg>
+          </div>
+          <p id="lyadhStatusText" class="font-note text-xs text-pink-700 font-bold mt-1">
+            "Just getting warm under the blanket... Tap more!"
+          </p>
+        </div>
+
+        <!-- Game 2: Bubu Expression Morphing Lab -->
+        <div class="doodle-card p-4 bg-[#fffaf5] text-center">
+          <div class="flex items-center justify-center gap-1 text-pink-700 font-doodle font-bold text-sm mb-1">
+            <span>🐾</span> Expression Lab
+          </div>
+          <h3 class="text-xl font-doodle font-bold text-slate-800 mb-1">Bubu's Mood Palette</h3>
+          <p class="font-note text-xs text-slate-500 mb-3">Tap any mood button below to see Bubu change:</p>
+
+          <div class="flex flex-wrap justify-center gap-1.5 mb-4">
+            <button class="mood-pill doodle-btn bg-pink-200 px-2.5 py-1 font-doodle text-xs font-bold active" data-mood="cozy">
+              🥰 Cozy
+            </button>
+            <button class="mood-pill doodle-btn bg-yellow-100 px-2.5 py-1 font-doodle text-xs font-bold" data-mood="bookworm">
+              📖 Reading
+            </button>
+            <button class="mood-pill doodle-btn bg-purple-100 px-2.5 py-1 font-doodle text-xs font-bold" data-mood="lyadh">
+              😴 Peak Lyadh
+            </button>
+            <button class="mood-pill doodle-btn bg-rose-100 px-2.5 py-1 font-doodle text-xs font-bold" data-mood="snack">
+              🍓 Snack Time
+            </button>
+            <button class="mood-pill doodle-btn bg-emerald-100 px-2.5 py-1 font-doodle text-xs font-bold" data-mood="pouty">
+              🥺 Dramatic Pout
+            </button>
+          </div>
+
+          <!-- Morphing Character Display -->
+          <div id="bubuMorphBox" class="w-36 h-36 mx-auto doodle-card bg-amber-50/60 flex items-center justify-center p-2 cursor-pointer">
+            <svg id="bubuMorphSvg" class="w-full h-full" viewBox="0 0 140 140">
+              <!-- Bunny Head Base -->
+              <path d="M 45 42 C 34 10, 52 5, 58 35" fill="#ffffff" stroke="#2b2538" stroke-width="3.5" stroke-linecap="round"/>
+              <path d="M 78 35 C 84 5, 102 10, 91 42" fill="#ffffff" stroke="#2b2538" stroke-width="3.5" stroke-linecap="round"/>
+              <ellipse cx="49" cy="22" rx="3" ry="8" fill="#ffb7c5"/>
+              <ellipse cx="87" cy="22" rx="3" ry="8" fill="#ffb7c5"/>
+              <circle cx="68" cy="72" r="38" fill="#ffffff" stroke="#2b2538" stroke-width="4"/>
+              <ellipse id="morphBlushL" cx="44" cy="80" rx="7" ry="4" fill="#f472b6" opacity="0.8"/>
+              <ellipse id="morphBlushR" cx="92" cy="80" rx="7" ry="4" fill="#f472b6" opacity="0.8"/>
+              
+              <!-- Dynamic Face -->
+              <g id="morphFaceGroup">
+                <path d="M 50 68 Q 56 62 62 68" stroke="#2b2538" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <path d="M 74 68 Q 80 62 86 68" stroke="#2b2538" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <polygon points="66,74 70,74 68,77" fill="#f43f5e"/>
+                <path d="M 64 81 Q 68 85 72 81" stroke="#2b2538" stroke-width="2.5" fill="none"/>
+              </g>
+            </svg>
+          </div>
+
+          <p id="morphStatusMsg" class="font-note text-sm text-pink-700 font-bold mt-2">
+            "Warm and snug in bed with hot chocolate!"
+          </p>
+        </div>
+
+      </section>
+
+      <!-- ============================================== -->
+      <!-- TAB 5: 🎁 UNBOX SURPRISE & STAR WISHES -->
+      <!-- ============================================== -->
+      <section id="tab-wishes" class="tab-view hidden flex flex-col gap-5">
+        
+        <!-- Tap-To-Unbox Parcel -->
+        <div class="doodle-card p-5 bg-gradient-to-b from-purple-50 to-pink-50 text-center relative overflow-hidden">
+          <div class="inline-block bg-purple-200 border-2 border-[#2b2538] rounded-full px-3 py-0.5 text-xs font-doodle font-bold mb-2">
+            🎁 Hand-Wrapped with Love
+          </div>
+          <h3 class="text-2xl font-doodle font-bold text-slate-800 mb-1">Unwrap Bubu's Gift!</h3>
+          <p class="font-note text-xs text-slate-600 mb-3">
+            Tap 3 times to peel the tape, untie the ribbon, and open the box:
+          </p>
+
+          <div class="relative w-44 h-44 mx-auto cursor-pointer" id="unboxContainer">
+            <div id="unboxBadge" class="absolute -top-2 left-1/2 -translate-x-1/2 bg-yellow-200 border-2 border-[#2b2538] text-[10px] font-bold font-doodle px-2 py-0.5 rounded-full z-20 whitespace-nowrap shadow-xs">
+              Tap 3 times to unwrap! (3 left)
+            </div>
+
+            <!-- Hand-drawn Gift SVG -->
+            <svg id="giftBoxSvg" class="w-full h-full drop-shadow-md transition-transform" viewBox="0 0 200 200">
+              <rect x="40" y="80" width="120" height="90" rx="8" fill="#fed7aa" stroke="#2b2538" stroke-width="4.5" />
+              <path id="giftLid" d="M 32 70 L 168 70 C 172 70, 175 75, 172 80 L 165 86 L 35 86 L 28 80 C 25 75, 28 70, 32 70 Z" fill="#fdba74" stroke="#2b2538" stroke-width="4.5" />
+              <rect x="90" y="70" width="20" height="100" fill="#f43f5e" stroke="#2b2538" stroke-width="3" />
+              <g id="giftBow">
+                <ellipse cx="85" cy="58" rx="16" ry="10" fill="#fb7185" stroke="#2b2538" stroke-width="3.5" transform="rotate(-25 85 58)"/>
+                <ellipse cx="115" cy="58" rx="16" ry="10" fill="#fb7185" stroke="#2b2538" stroke-width="3.5" transform="rotate(25 115 58)"/>
+                <circle cx="100" cy="62" r="8" fill="#e11d48" stroke="#2b2538" stroke-width="3"/>
+              </g>
+              <rect id="giftTape" x="50" y="115" width="100" height="18" rx="4" fill="#fef08a" stroke="#2b2538" stroke-width="2.5" opacity="0.95" stroke-dasharray="4,2"/>
+            </svg>
+          </div>
+
+          <!-- Unboxed Reveal Card -->
+          <div id="unboxedPassCard" class="hidden mt-4 p-4 doodle-card bg-white text-left">
+            <div class="flex items-center gap-1.5 mb-2">
+              <span class="text-xl">🏆</span>
+              <h4 class="font-doodle text-lg font-bold text-pink-700">Official Pass: The Prettiest Girl in Existence</h4>
+            </div>
+            <div class="font-note text-xs text-slate-700 space-y-1.5 border-l-3 border-pink-400 pl-2.5">
+              <p>🌟 <strong>Issued to:</strong> Sushreeta</p>
+              <p>✨ <strong>Privileges:</strong> Unlimited headpats, fresh books, hot cocoa, maximum lazy blanket mornings, and endless adoration.</p>
+              <p class="font-bold text-purple-700 font-doodle text-sm">"Never stop reading, drawing, or lighting up every room you walk into!"</p>
+            </div>
+            <div class="mt-3 text-center">
+              <button id="resetGiftBtn" class="doodle-btn bg-yellow-200 px-3 py-1 text-xs font-doodle font-bold">
+                🎁 Re-seal Box
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Star Wish Jar -->
+        <div class="doodle-card p-4 bg-[#fffef5] relative">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-xl">⭐</span>
+            <h3 class="font-doodle text-xl font-bold text-slate-800">The Origami Star Jar for Bubu</h3>
+          </div>
+          <p class="font-note text-xs text-slate-600 mb-3">
+            Little origami stars folded with quiet wishes for your days, books, and cozy smiles.
+          </p>
+
+          <div class="flex items-center gap-3 bg-pink-50/70 p-3 rounded-2xl border-2 border-[#2b2538]">
+            <div id="luckyJarArea" class="cursor-pointer text-center group">
+              <svg class="w-20 h-24 mx-auto group-hover:scale-105 transition-transform" viewBox="0 0 100 120">
+                <rect x="25" y="10" width="50" height="12" rx="4" fill="#fed7aa" stroke="#2b2538" stroke-width="3" />
+                <path d="M 22 22 L 78 22" stroke="#2b2538" stroke-width="3" />
+                <path d="M 24 24 C 10 32, 10 90, 16 105 C 22 115, 78 115, 84 105 C 90 90, 90 32, 76 24 Z" fill="#ffffff" stroke="#2b2538" stroke-width="3.5" fill-opacity="0.85" />
+                <text x="35" y="60" font-size="14">⭐</text>
+                <text x="50" y="85" font-size="16">🌟</text>
+                <text x="30" y="95" font-size="12">✨</text>
+                <text x="55" y="65" font-size="13">🌸</text>
+              </svg>
+              <span class="text-[10px] font-doodle font-bold text-pink-700 underline block mt-0.5">
+                Tap to Draw ⭐
+              </span>
+            </div>
+
+            <div class="flex-1">
+              <div id="wishNoteBox" class="bg-white p-3 rounded-xl border-2 border-[#2b2538] min-h-[75px] flex items-center justify-center text-center">
+                <p id="wishNoteContent" class="font-note text-xs text-slate-800 leading-snug">
+                  🌟 "May your bookshelf always have that one book that steals your heart, and may your days be full of peaceful lyadh."
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lined Love Note -->
+          <div class="lined-notepad p-4 rounded-xl border-2 border-[#2b2538] mt-4 relative">
+            <div class="absolute -top-3 right-4 bg-pink-100 border-2 border-[#2b2538] px-2 py-0.5 rounded text-[10px] font-doodle font-bold text-pink-800">
+              Keepsake Note 💌
+            </div>
+            <h4 class="font-doodle text-base font-bold text-slate-800 mb-1">To My Prettiest Girl in the World,</h4>
+            <p class="font-note text-xs text-slate-700 leading-relaxed">
+              Whenever you're having a long day or just want to curl up with a book and do what you do best (10/10 master-tier lyadh khawa), open this little corner. You bring so much calm warmth, laughter, and cuteness into everything.
+            </p>
+            <p class="font-note text-xs text-pink-700 font-bold mt-2 text-right">
+              — Forever your #1 fan & personal hype team! 🌸✨
+            </p>
+          </div>
+
+          <!-- Sky Lantern Release -->
+          <div class="mt-4 text-center">
+            <button id="sendSkyLanternBtn" class="doodle-btn bg-rose-200 hover:bg-rose-300 text-rose-950 font-doodle text-sm font-bold px-4 py-2">
+              🏮 Release sky lanterns for Sushreeta
+            </button>
+          </div>
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-4 text-center text-[11px] text-slate-500 font-note border-t border-amber-200/80 bg-white/60">
+      <p>Handcrafted with pastel crayons, cozy novels & soft fairy lights.</p>
+      <p class="text-slate-400 mt-0.5">For Sushreeta 🌸 Prettiest Girl in da World.</p>
+    </footer>
+
+  </div>
+
+  <!-- Sky Lanterns Floating Overlay -->
+  <div id="skyOverlay" class="fixed inset-0 pointer-events-none z-50 overflow-hidden"></div>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    /* =========================================================
+       1. WEB AUDIO API SYNTHESIZER
+       ========================================================= */
+    let audioCtx = null;
+    let isPlayingBGM = false;
+    let bgmTimer = null;
+
+    const notes = [261.63, 293.66, 329.63, 392.00, 440.00, 523.25, 587.33, 659.25];
+
+    function getAudioCtx() {
+      if (!audioCtx) {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AudioContext();
+      }
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      return audioCtx;
+    }
+
+    function playTone(freq, timeOffset = 0, duration = 1.6, type = 'sine', maxVol = 0.04) {
+      try {
+        const ctx = getAudioCtx();
+        const now = ctx.currentTime + timeOffset;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, now);
+
+        gain.gain.setValueAtTime(0.0001, now);
+        gain.gain.linearRampToValueAtTime(maxVol, now + 0.05);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+
+        osc.start(now);
+        osc.stop(now + duration + 0.1);
+      } catch(e) {}
+    }
+
+    function playCuteBlip() {
+      playTone(580, 0, 0.15, 'triangle', 0.06);
+    }
+
+    function playTriumphChord() {
+      [523.25, 659.25, 783.99, 1046.50].forEach((f, i) => {
+        playTone(f, i * 0.08, 1.2, 'sine', 0.05);
+      });
+    }
+
+    function playBgmArp() {
+      if (!isPlayingBGM) return;
+      const r = notes[Math.floor(Math.random() * 4)];
+      const t = notes[Math.floor(Math.random() * 4) + 2];
+      const f = notes[Math.floor(Math.random() * 3) + 4];
+
+      playTone(r, 0, 2.2);
+      playTone(t, 0.3, 2.0);
+      playTone(f, 0.6, 2.4);
+    }
+
+    const musicBtn = document.getElementById('musicToggleBtn');
+    const musicIcon = document.getElementById('musicIcon');
+    musicBtn.addEventListener('click', () => {
+      getAudioCtx();
+      if (!isPlayingBGM) {
+        isPlayingBGM = true;
+        musicIcon.textContent = '⏸️';
+        playBgmArp();
+        bgmTimer = setInterval(playBgmArp, 2800);
+      } else {
+        isPlayingBGM = false;
+        musicIcon.textContent = '🎵';
+        clearInterval(bgmTimer);
+      }
+    });
+
+    /* =========================================================
+       2. PIN LOCK SCREEN ENGINE (PASS: 2511)
+       ========================================================= */
+    const correctPin = "2511";
+    let enteredPin = "";
+    const lockScreen = document.getElementById('lockScreen');
+    const mainApp = document.getElementById('mainApp');
+    const pinDots = document.querySelectorAll('#pinDots > div');
+    const pinErrorMsg = document.getElementById('pinErrorMsg');
+    const pinCard = lockScreen.querySelector('.doodle-card');
+
+    function updatePinDots() {
+      pinDots.forEach((dot, idx) => {
+        if (idx < enteredPin.length) {
+          dot.classList.remove('bg-white');
+          dot.classList.add('bg-pink-400', 'scale-110');
+        } else {
+          dot.classList.remove('bg-pink-400', 'scale-110');
+          dot.classList.add('bg-white');
+        }
+      });
+    }
+
+    function verifyPin() {
+      if (enteredPin === correctPin) {
+        playTriumphChord();
+        pinErrorMsg.classList.add('opacity-0');
+        
+        // Confetti explosion on unlock
+        for (let i = 0; i < 20; i++) {
+          setTimeout(() => {
+            emitParticle(window.innerWidth / 2 + (Math.random() * 120 - 60), window.innerHeight / 2 + (Math.random() * 60 - 30), ['🌸', '✨', '☕', '⭐', '💖'][i % 5]);
+          }, i * 30);
+        }
+
+        setTimeout(() => {
+          lockScreen.style.transition = 'opacity 0.5s ease';
+          lockScreen.style.opacity = '0';
+          setTimeout(() => {
+            lockScreen.classList.add('hidden');
+            mainApp.classList.remove('hidden');
+          }, 500);
+        }, 600);
+
+      } else {
+        // Error shake
+        playTone(180, 0, 0.25, 'sawtooth', 0.08);
+        pinCard.classList.add('shake-error');
+        pinErrorMsg.classList.remove('opacity-0');
+
+        setTimeout(() => {
+          pinCard.classList.remove('shake-error');
+          enteredPin = "";
+          updatePinDots();
+        }, 500);
+      }
+    }
+
+    document.querySelectorAll('.pin-key-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        playCuteBlip();
+        const key = btn.getAttribute('data-key');
+
+        if (key === 'clear') {
+          enteredPin = "";
+          pinErrorMsg.classList.add('opacity-0');
+          updatePinDots();
+        } else if (key === 'back') {
+          if (enteredPin.length > 0) {
+            enteredPin = enteredPin.slice(0, -1);
+            updatePinDots();
+          }
+        } else {
+          if (enteredPin.length < 4) {
+            enteredPin += key;
+            updatePinDots();
+            if (enteredPin.length === 4) {
+              setTimeout(verifyPin, 150);
+            }
+          }
+        }
+      });
+    });
+
+    /* =========================================================
+       3. NAVIGATION & PARTICLES
+       ========================================================= */
+    const navPills = document.querySelectorAll('.nav-pill');
+    const tabViews = document.querySelectorAll('.tab-view');
+
+    navPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        playCuteBlip();
+        const target = pill.getAttribute('data-tab');
+
+        navPills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+
+        tabViews.forEach(v => {
+          if (v.id === `tab-${target}`) {
+            v.classList.remove('hidden');
+          } else {
+            v.classList.add('hidden');
+          }
+        });
+
+        if (target === 'draw') {
+          setTimeout(initCanvasSize, 80);
+        }
+      });
+    });
+
+    function emitParticle(x, y, char = '✨') {
+      const p = document.createElement('div');
+      p.className = 'particle-pop select-none';
+      p.textContent = char;
+      p.style.fontSize = (Math.random() * 14 + 18) + 'px';
+      p.style.left = (x - 10) + 'px';
+      p.style.top = (y - 10) + 'px';
+
+      const angle = Math.random() * Math.PI * 2;
+      const dist = Math.random() * 60 + 30;
+      p.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
+      p.style.setProperty('--ty', Math.sin(angle) * dist - 25 + 'px');
+
+      document.body.appendChild(p);
+      setTimeout(() => { if (p.parentNode) p.parentNode.removeChild(p); }, 1000);
+    }
+
+    // Cozy Burrito Bubu Patting
+    const heroBubuArea = document.getElementById('heroBubuArea');
+    const heroBubuSvg = document.getElementById('heroBubuSvg');
+    const patBubuBtn = document.getElementById('patBubuBtn');
+    const sparkleBubuBtn = document.getElementById('sparkleBubuBtn');
+
+    function squishBubu() {
+      playCuteBlip();
+      heroBubuSvg.style.transform = 'scale(1.15, 0.85) translateY(6px)';
+      setTimeout(() => {
+        heroBubuSvg.style.transform = 'scale(0.92, 1.12) translateY(-8px)';
+        setTimeout(() => {
+          heroBubuSvg.style.transform = 'scale(1, 1)';
+        }, 180);
+      }, 150);
+
+      const r = heroBubuArea.getBoundingClientRect();
+      emitParticle(r.left + r.width / 2, r.top + r.height / 3, ['💖', '🐾', '✨', '🌸'][Math.floor(Math.random() * 4)]);
+    }
+
+    heroBubuArea.addEventListener('click', squishBubu);
+    patBubuBtn.addEventListener('click', squishBubu);
+    sparkleBubuBtn.addEventListener('click', () => {
+      playCuteBlip();
+      const r = sparkleBubuBtn.getBoundingClientRect();
+      for (let i = 0; i < 8; i++) {
+        setTimeout(() => {
+          emitParticle(r.left + r.width / 2, r.top, ['⭐', '✨', '🌸', '💖'][i % 4]);
+        }, i * 40);
+      }
+    });
+
+    // Cozy fairy lights & books clinking
+    const canteenDuoBox = document.getElementById('canteenDuoBox');
+    const cupLeft = document.getElementById('cupLeft');
+    const cupRight = document.getElementById('cupRight');
+    const cheersSpark = document.getElementById('cheersSpark');
+    const cheersStatusMsg = document.getElementById('cheersStatusMsg');
+    let clinked = false;
+
+    canteenDuoBox.addEventListener('click', () => {
+      playCuteBlip();
+      clinked = !clinked;
+      if (clinked) {
+        cupLeft.style.transform = 'translateX(18px) rotate(6deg)';
+        cupRight.style.transform = 'translateX(-18px) rotate(-6deg)';
+        cheersSpark.style.opacity = '1';
+        cheersStatusMsg.textContent = '✨ "Fairy lights sparkling & hot chocolate ready for reading!" 🕯️💖';
+        const r = canteenDuoBox.getBoundingClientRect();
+        emitParticle(r.left + r.width / 2, r.top + 30, '💖');
+      } else {
+        cupLeft.style.transform = 'none';
+        cupRight.style.transform = 'none';
+        cheersSpark.style.opacity = '0';
+        cheersStatusMsg.textContent = 'Warm books and quiet moments with Bubu.';
+      }
+    });
+
+    /* =========================================================
+       4. 👑 10 BUBU HYPE FACTS
+       ========================================================= */
+    const bubuFacts = [
+      "1. Officially certified: Prettiest human in this and every single parallel dimension.",
+      "2. Can read 400 pages in one sitting while maintaining 100% effortless cuteness.",
+      "3. Her superpower 'Lyadh Khawa' deserves an Olympic gold medal with cozy blankets.",
+      "4. Leonardo da Vinci officially retired when he saw Sushreeta pick up a pencil.",
+      "5. One single smile from Bubu has a scientifically proven 99.9% cure rate for bad days.",
+      "6. Grandmaster of staying cozy, wrapped like a human burrito with a novel.",
+      "7. The Louvre called three times asking for their stolen masterpiece (her face).",
+      "8. Turns any ordinary room into the coziest aesthetic sanctuary on earth.",
+      "9. Her laugh has a 100% success rate at instantly melting hearts into warm honey.",
+      "10. Loving and adoring Sushreeta is literally the easiest, sweetest task in the world."
+    ];
+
+    let currentHypeIdx = 0;
+    const hypeCardNum = document.getElementById('hypeCardNum');
+    const hypeCardText = document.getElementById('hypeCardText');
+    const prevHypeBtn = document.getElementById('prevHypeBtn');
+    const nextHypeBtn = document.getElementById('nextHypeBtn');
+    const toggleAllHypeBtn = document.getElementById('toggleAllHypeBtn');
+    const allHypeList = document.getElementById('allHypeList');
+
+    function renderHypeFact() {
+      hypeCardText.style.opacity = '0';
+      setTimeout(() => {
+        hypeCardNum.textContent = (currentHypeIdx + 1);
+        hypeCardText.textContent = `"${bubuFacts[currentHypeIdx]}"`;
+        hypeCardText.style.opacity = '1';
+      }, 150);
+    }
+
+    prevHypeBtn.addEventListener('click', () => {
+      playCuteBlip();
+      currentHypeIdx = (currentHypeIdx - 1 + bubuFacts.length) % bubuFacts.length;
+      renderHypeFact();
+    });
+
+    nextHypeBtn.addEventListener('click', () => {
+      playCuteBlip();
+      currentHypeIdx = (currentHypeIdx + 1) % bubuFacts.length;
+      renderHypeFact();
+      const r = nextHypeBtn.getBoundingClientRect();
+      emitParticle(r.left + r.width / 2, r.top, '👑');
+    });
+
+    bubuFacts.forEach((fact, i) => {
+      const p = document.createElement('div');
+      p.className = 'p-2 rounded bg-amber-50 text-xs font-note border border-amber-200';
+      p.innerHTML = `<span class="font-bold text-pink-700 font-doodle">#${i + 1}:</span> "${fact}"`;
+      allHypeList.appendChild(p);
+    });
+
+    toggleAllHypeBtn.addEventListener('click', () => {
+      playCuteBlip();
+      allHypeList.classList.toggle('hidden');
+      toggleAllHypeBtn.textContent = allHypeList.classList.contains('hidden') ? '📜 View all 10 facts at once' : '▲ Collapse list';
+    });
+
+    const stampSealBtn = document.getElementById('stampSealBtn');
+    const stampBadge = document.getElementById('stampBadge');
+    stampSealBtn.addEventListener('click', () => {
+      playTriumphChord();
+      stampBadge.classList.remove('hidden', 'stamp-anim');
+      void stampBadge.offsetWidth;
+      stampBadge.classList.add('stamp-anim');
+
+      const r = stampSealBtn.getBoundingClientRect();
+      for (let i = 0; i < 10; i++) {
+        setTimeout(() => {
+          emitParticle(r.left + r.width / 2, r.top, ['👑', '✨', '🌸', '⭐'][i % 4]);
+        }, i * 35);
+      }
+    });
+
+    /* =========================================================
+       5. 🎨 5-LEVEL DRAW DUEL
+       ========================================================= */
+    const drawLevels = [
+      {
+        title: "Vintage Novel",
+        svgGuide: `<svg viewBox="0 0 160 160" class="w-44 h-44"><rect x="35" y="45" width="90" height="70" rx="8" fill="none" stroke="#6b7280" stroke-width="4" stroke-dasharray="6,4"/><path d="M 80 45 L 80 115" stroke="#6b7280" stroke-width="4" stroke-dasharray="6,4"/><path d="M 45 60 L 70 60 M 45 75 L 70 75 M 90 60 L 115 60" stroke="#6b7280" stroke-width="3" stroke-dasharray="4,2"/></svg>`,
+        compliment: "100% BOOK LOVER ACCURACY! The pages are practically turning themselves!"
+      },
+      {
+        title: "Sleeping Sloth",
+        svgGuide: `<svg viewBox="0 0 160 160" class="w-44 h-44"><ellipse cx="80" cy="95" rx="50" ry="32" fill="none" stroke="#6b7280" stroke-width="4" stroke-dasharray="6,4"/><circle cx="50" cy="80" r="22" fill="none" stroke="#6b7280" stroke-width="4" stroke-dasharray="6,4"/><path d="M 40 65 L 45 55 M 55 65 L 60 55" stroke="#6b7280" stroke-width="3" stroke-dasharray="4,2"/></svg>`,
+        compliment: "MAXIMUM LYADH REACHED! That nap pose is an absolute artistic masterpiece!"
+      },
+      {
+        title: "Paint Palette & Brush",
+        svgGuide: `<svg viewBox="0 0 160 160" class="w-44 h-44"><path d="M 40 80 C 40 50, 120 50, 120 80 C 120 110, 80 120, 60 110 C 45 102, 40 95, 40 80 Z" fill="none" stroke="#6b7280" stroke-width="4" stroke-dasharray="6,4"/><circle cx="65" cy="72" r="5" fill="#6b7280"/><circle cx="85" cy="68" r="5" fill="#6b7280"/><circle cx="102" cy="78" r="5" fill="#6b7280"/><circle cx="95" cy="98" r="7" stroke="#6b7280" stroke-width="2" fill="none"/><line x1="30" y1="125" x2="80" y2="75" stroke="#6b7280" stroke-width="3.5" stroke-dasharray="5,3"/></svg>`,
+        compliment: "MASTER ARTIST LEVEL! Color blending that would make Monet blush!"
+      },
+      {
+        title: "Magic Star",
+        svgGuide: `<svg viewBox="0 0 160 160" class="w-44 h-44"><polygon points="80,25 97,60 135,65 107,92 114,130 80,112 46,130 53,92 25,65 63,60" fill="none" stroke="#6b7280" stroke-width="4" stroke-dasharray="6,4"/></svg>`,
+        compliment: "COSMIC GOLD TIER! A literal star drawing another star!"
+      },
+      {
+        title: "Sparkly Heart",
+        svgGuide: `<svg viewBox="0 0 160 160" class="w-44 h-44"><path d="M 80 130 C 30 95, 25 55, 52 42 C 70 32, 78 45, 80 50 C 82 45, 90 32, 108 42 C 135 55, 130 95, 80 130 Z" fill="none" stroke="#6b7280" stroke-width="4" stroke-dasharray="6,4"/></svg>`,
+        compliment: "1000% CUTENESS RECORD! All hail the undisputed queen of doodles!"
+      }
+    ];
+
+    let currentDrawLevel = 0;
+    const canvas = document.getElementById('accuracyCanvas');
+    const ctx = canvas.getContext('2d');
+    const targetCharTitle = document.getElementById('targetCharTitle');
+    const canvasTemplateGuide = document.getElementById('canvasTemplateGuide');
+    const clearCanvasBtn = document.getElementById('clearCanvasBtn');
+    const toggleGuideBtn = document.getElementById('toggleGuideBtn');
+    const gradeDrawingBtn = document.getElementById('gradeDrawingBtn');
+    const gradeResultBox = document.getElementById('gradeResultBox');
+    const gradeScoreText = document.getElementById('gradeScoreText');
+    const gradeFeedbackText = document.getElementById('gradeFeedbackText');
+    const nextLevelUnlockBtn = document.getElementById('nextLevelUnlockBtn');
+    const levelBtns = document.querySelectorAll('.draw-lvl-btn');
+
+    let isDrawing = false;
+    let guideVisible = true;
+
+    function initCanvasSize() {
+      const parent = canvas.parentElement;
+      canvas.width = parent.clientWidth;
+      canvas.height = parent.clientHeight;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      ctx.lineWidth = 4.5;
+      ctx.strokeStyle = '#2b2538';
+    }
+    window.addEventListener('resize', initCanvasSize);
+
+    function loadDrawLevel(idx) {
+      currentDrawLevel = idx;
+      const lvl = drawLevels[idx];
+      targetCharTitle.textContent = `Target: ${lvl.title}`;
+      canvasTemplateGuide.innerHTML = lvl.svgGuide;
+      gradeResultBox.classList.add('hidden');
+      clearCanvas();
+
+      levelBtns.forEach((b, i) => {
+        if (i === idx) {
+          b.classList.remove('bg-white');
+          b.classList.add('bg-pink-200');
+        } else {
+          b.classList.remove('bg-pink-200');
+          b.classList.add('bg-white');
+        }
+      });
+    }
+
+    levelBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        playCuteBlip();
+        const lvl = parseInt(btn.getAttribute('data-level'));
+        loadDrawLevel(lvl);
+      });
+    });
+
+    function clearCanvas() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+    clearCanvasBtn.addEventListener('click', () => {
+      playCuteBlip();
+      clearCanvas();
+    });
+
+    toggleGuideBtn.addEventListener('click', () => {
+      playCuteBlip();
+      guideVisible = !guideVisible;
+      canvasTemplateGuide.style.opacity = guideVisible ? '0.3' : '0.04';
+    });
+
+    function getCanvasCoords(e) {
+      const rect = canvas.getBoundingClientRect();
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      return { x: clientX - rect.left, y: clientY - rect.top };
+    }
+
+    function startDraw(e) {
+      e.preventDefault();
+      isDrawing = true;
+      const { x, y } = getCanvasCoords(e);
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+    }
+
+    function moveDraw(e) {
+      if (!isDrawing) return;
+      e.preventDefault();
+      const { x, y } = getCanvasCoords(e);
+      ctx.lineTo(x, y);
+      ctx.stroke();
+    }
+
+    function endDraw(e) {
+      if (!isDrawing) return;
+      e.preventDefault();
+      isDrawing = false;
+      ctx.closePath();
+    }
+
+    canvas.addEventListener('mousedown', startDraw);
+    canvas.addEventListener('mousemove', moveDraw);
+    window.addEventListener('mouseup', endDraw);
+
+    canvas.addEventListener('touchstart', startDraw, { passive: false });
+    canvas.addEventListener('touchmove', moveDraw, { passive: false });
+    window.addEventListener('touchend', endDraw);
+
+    gradeDrawingBtn.addEventListener('click', () => {
+      playTriumphChord();
+      const lvl = drawLevels[currentDrawLevel];
+      const randomScore = (Math.random() * 2.5 + 97.4).toFixed(1);
+
+      gradeScoreText.textContent = `ACCURACY: ${randomScore}% ⭐`;
+      gradeFeedbackText.textContent = `"${lvl.compliment}"`;
+      gradeResultBox.classList.remove('hidden');
+
+      const r = gradeDrawingBtn.getBoundingClientRect();
+      for (let i = 0; i < 12; i++) {
+        setTimeout(() => {
+          emitParticle(r.left + r.width / 2, r.top, ['🌟', '✨', '🎨', '💖'][i % 4]);
+        }, i * 35);
+      }
+    });
+
+    nextLevelUnlockBtn.addEventListener('click', () => {
+      playCuteBlip();
+      const nextLvl = (currentDrawLevel + 1) % drawLevels.length;
+      loadDrawLevel(nextLvl);
+    });
+
+    /* =========================================================
+       6. 🛋️ LYADH METER & MOOD LAB
+       ========================================================= */
+    let lyadhVal = 25;
+    const lyadhProgressBar = document.getElementById('lyadhProgressBar');
+    const lyadhPercentText = document.getElementById('lyadhPercentText');
+    const lyadhStatusText = document.getElementById('lyadhStatusText');
+    const pillowTapArea = document.getElementById('pillowTapArea');
+
+    const lyadhRemarks = [
+      "25%: Just settling in with fluffy socks...",
+      "45%: Warm tea poured, book open, zero worries.",
+      "65%: Blanket tucked tightly around ears.",
+      "85%: Moving from the couch has been declared illegal.",
+      "100%: MAXIMUM LYADH MASTER REACHED! Pure comfy peace. 🛋️👑"
+    ];
+
+    pillowTapArea.addEventListener('click', () => {
+      playCuteBlip();
+      lyadhVal = Math.min(100, lyadhVal + 15);
+      if (lyadhVal >= 100) playTriumphChord();
+
+      lyadhProgressBar.style.width = lyadhVal + '%';
+      lyadhPercentText.textContent = `${lyadhVal}% Chilled Out`;
+
+      const idx = Math.min(lyadhRemarks.length - 1, Math.floor(lyadhVal / 25));
+      lyadhStatusText.textContent = `"${lyadhRemarks[idx]}"`;
+
+      const r = pillowTapArea.getBoundingClientRect();
+      emitParticle(r.left + r.width / 2, r.top + 20, ['🛋️', '💤', '✨', '🌸'][Math.floor(Math.random() * 4)]);
+    });
+
+    // Morphing Lab
+    const moodPills = document.querySelectorAll('.mood-pill');
+    const morphFaceGroup = document.getElementById('morphFaceGroup');
+    const morphStatusMsg = document.getElementById('morphStatusMsg');
+    const bubuMorphBox = document.getElementById('bubuMorphBox');
+
+    const bubuMoods = {
+      cozy: {
+        face: `<path d="M 50 68 Q 56 62 62 68" stroke="#2b2538" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M 74 68 Q 80 62 86 68" stroke="#2b2538" stroke-width="3" fill="none" stroke-linecap="round"/><polygon points="66,74 70,74 68,77" fill="#f43f5e"/><path d="M 64 81 Q 68 85 72 81" stroke="#2b2538" stroke-width="2.5" fill="none"/>`,
+        msg: `"Warm and snug in bed with hot chocolate!"`
+      },
+      bookworm: {
+        face: `<circle cx="56" cy="68" r="4.5" fill="#2b2538"/><circle cx="80" cy="68" r="4.5" fill="#2b2538"/><polygon points="66,74 70,74 68,77" fill="#f43f5e"/><path d="M 62 80 Q 68 86 74 80" stroke="#2b2538" stroke-width="2.5" fill="none"/><rect x="52" y="85" width="32" height="18" rx="2" fill="#a7f3d0" stroke="#2b2538" stroke-width="2"/>`,
+        msg: `"Just one more chapter... (has read 50 chapters already)"`
+      },
+      lyadh: {
+        face: `<path d="M 50 70 Q 56 74 62 70" stroke="#2b2538" stroke-width="3" fill="none"/><path d="M 74 70 Q 80 74 86 70" stroke="#2b2538" stroke-width="3" fill="none"/><ellipse cx="68" cy="80" rx="4" ry="2" fill="#fca5a5"/><text x="88" y="60" font-size="12">💤</text>`,
+        msg: `"Energy level: 0%. Happiness level: 100%."`
+      },
+      snack: {
+        face: `<circle cx="56" cy="68" r="6" fill="#2b2538"/><circle cx="80" cy="68" r="6" fill="#2b2538"/><circle cx="68" cy="82" r="7" fill="#f43f5e" stroke="#2b2538" stroke-width="2"/><text x="86" y="80" font-size="14">🍓</text>`,
+        msg: `"Munching sweet snacks while curling up in a blanket!"`
+      },
+      pouty: {
+        face: `<path d="M 52 66 L 62 69" stroke="#2b2538" stroke-width="3" stroke-linecap="round"/><path d="M 74 69 L 84 66" stroke="#2b2538" stroke-width="3" stroke-linecap="round"/><circle cx="57" cy="72" r="3" fill="#2b2538"/><circle cx="79" cy="72" r="3" fill="#2b2538"/><path d="M 64 82 Q 68 77 72 82" stroke="#2b2538" stroke-width="2.5" fill="none"/>`,
+        msg: `"Giving the most adorable, world-ending dramatic pout."`
+      }
+    };
+
+    moodPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        playCuteBlip();
+        moodPills.forEach(p => p.classList.remove('active', 'bg-pink-300'));
+        pill.classList.add('active', 'bg-pink-300');
+
+        const m = pill.getAttribute('data-mood');
+        morphFaceGroup.innerHTML = bubuMoods[m].face;
+        morphStatusMsg.textContent = bubuMoods[m].msg;
+
+        bubuMorphBox.style.transform = 'scale(1.12) rotate(3deg)';
+        setTimeout(() => bubuMorphBox.style.transform = 'scale(1) rotate(0deg)', 200);
+      });
+    });
+
+    /* =========================================================
+       7. 🎁 UNBOXING PARCEL & STAR WISHES
+       ========================================================= */
+    let unboxStep = 0;
+    const unboxContainer = document.getElementById('unboxContainer');
+    const unboxBadge = document.getElementById('unboxBadge');
+    const giftTape = document.getElementById('giftTape');
+    const giftBow = document.getElementById('giftBow');
+    const giftLid = document.getElementById('giftLid');
+    const unboxedPassCard = document.getElementById('unboxedPassCard');
+    const resetGiftBtn = document.getElementById('resetGiftBtn');
+
+    unboxContainer.addEventListener('click', () => {
+      playCuteBlip();
+      unboxStep++;
+
+      if (unboxStep === 1) {
+        giftTape.style.display = 'none';
+        unboxBadge.textContent = 'Tape peeled! 2 taps left!';
+        emitParticle(window.innerWidth / 2, window.innerHeight / 2, '✨');
+      } else if (unboxStep === 2) {
+        giftBow.style.display = 'none';
+        unboxBadge.textContent = 'Ribbon untied! 1 tap to open!';
+        emitParticle(window.innerWidth / 2, window.innerHeight / 2, '🎀');
+      } else if (unboxStep === 3) {
+        giftLid.style.transform = 'translateY(-25px) rotate(-10deg)';
+        unboxBadge.textContent = 'Opened with infinite love! 🎉';
+        unboxedPassCard.classList.remove('hidden');
+        playTriumphChord();
+
+        for (let i = 0; i < 14; i++) {
+          setTimeout(() => {
+            emitParticle(window.innerWidth / 2 + (Math.random() * 80 - 40), window.innerHeight / 2, '⭐');
+          }, i * 35);
+        }
+      }
+    });
+
+    resetGiftBtn.addEventListener('click', () => {
+      playCuteBlip();
+      unboxStep = 0;
+      giftTape.style.display = 'block';
+      giftBow.style.display = 'block';
+      giftLid.style.transform = 'none';
+      unboxBadge.textContent = 'Tap 3 times to unwrap! (3 left)';
+      unboxedPassCard.classList.add('hidden');
+    });
+
+    // Star Jar
+    const jarWishes = [
+      "🌟 'May your bookshelf always have that one book that steals your heart, and may your days be full of peaceful lyadh.'",
+      "🕯️ 'May your quiet evenings be soft with fairy lights, warm drinks, and zero worries.'",
+      "🎨 'May your sketches and doodles continue to radiate so much warmth and personality—you are genuinely so talented.'",
+      "🌸 'May you always remember that you are the prettiest girl in the entire universe and loved beyond measure.'",
+      "🛋️ 'May you forever enjoy guilt-free naps, cloud-soft blankets, and zero morning alarms.'"
+    ];
+
+    const luckyJarArea = document.getElementById('luckyJarArea');
+    const wishNoteBox = document.getElementById('wishNoteBox');
+    const wishNoteContent = document.getElementById('wishNoteContent');
+
+    luckyJarArea.addEventListener('click', () => {
+      playCuteBlip();
+      wishNoteBox.style.transform = 'scale(0.96)';
+      wishNoteContent.style.opacity = '0';
+
+      setTimeout(() => {
+        const randomWish = jarWishes[Math.floor(Math.random() * jarWishes.length)];
+        wishNoteContent.textContent = randomWish;
+        wishNoteContent.style.opacity = '1';
+        wishNoteBox.style.transform = 'scale(1)';
+      }, 150);
+
+      const r = luckyJarArea.getBoundingClientRect();
+      for (let i = 0; i < 6; i++) {
+        setTimeout(() => {
+          emitParticle(r.left + r.width / 2, r.top + 20, ['⭐', '✨', '🌸'][i % 3]);
+        }, i * 40);
+      }
+    });
+
+    // Sky Lantern Release Animation
+    const sendSkyLanternBtn = document.getElementById('sendSkyLanternBtn');
+    const skyOverlay = document.getElementById('skyOverlay');
+
+    sendSkyLanternBtn.addEventListener('click', () => {
+      playTriumphChord();
+      for (let i = 0; i < 9; i++) {
+        setTimeout(() => {
+          createSkyLantern();
+        }, i * 220);
+      }
+    });
+
+    function createSkyLantern() {
+      const lantern = document.createElement('div');
+      lantern.className = 'absolute pointer-events-none select-none text-2xl transition-all duration-1000';
+      lantern.textContent = '🏮';
+      const startX = Math.random() * (window.innerWidth - 60) + 20;
+      lantern.style.left = startX + 'px';
+      lantern.style.bottom = '-40px';
+      lantern.style.opacity = '0.95';
+      lantern.style.transform = `scale(${Math.random() * 0.5 + 0.9})`;
+      skyOverlay.appendChild(lantern);
+
+      let posY = -40;
+      let opacity = 0.95;
+      const speed = Math.random() * 1.8 + 2.2;
+      const swayAmp = Math.random() * 20 + 10;
+      let swayTick = Math.random() * 10;
+
+      const flyTimer = setInterval(() => {
+        posY += speed;
+        swayTick += 0.05;
+        lantern.style.bottom = posY + 'px';
+        lantern.style.left = (startX + Math.sin(swayTick) * swayAmp) + 'px';
+
+        if (posY > window.innerHeight * 0.6) {
+          opacity -= 0.015;
+          lantern.style.opacity = Math.max(0, opacity).toString();
+        }
+
+        if (posY > window.innerHeight + 50 || opacity <= 0) {
+          clearInterval(flyTimer);
+          if (lantern.parentNode) lantern.parentNode.removeChild(lantern);
+        }
+      }, 20);
+    }
+
+    // Default setup on startup
+    window.addEventListener('DOMContentLoaded', () => {
+      loadDrawLevel(0);
+      renderHypeFact();
+    });
+  </script>
+</body>
+</html>
